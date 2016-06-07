@@ -1,0 +1,171 @@
+/*
+  colors (B G Y O R):
+  #293757
+  #568D4B
+  #D5BB56
+  #D26A1B
+  #A41D1A
+*/
+
+/* Import Google Fonts */
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto);
+
+[v-cloak] { display: none; }
+body {
+  font-family: Roboto, Calibri, Arial;
+  background-color: #D5BB56;
+  padding-bottom: 50px; /* buffer for bottom bar */
+}
+h2 { color: darkgreen }
+img { cursor: pointer }
+label {
+  font-size: 0.6em;
+}
+nav, ul#mybeers { z-index: 999; }
+ul {
+    list-style-type: none;
+}
+#searchinput {
+    width: 200px;
+}
+#searchclear {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ccc;
+}
+.tentbuttons {
+  display: inline-block;
+}
+small { font-size: 0.7em; font-style: italic }
+tr:nth-child(even) td {
+    background-color: #efffef;
+}
+td {
+  background: white;
+  font-size: 1.2em;
+  border: 1px solid lightgreen;
+}
+
+/* https://stackoverflow.com/a/18530995/5701 */
+/*
+.navbar-custom {
+    background-color:#229922;
+    color:#ffffff;
+    border-radius:0;
+}
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+*/
+
+/* navbar | http://www.bootply.com/Iq82PS84ZA */
+.navbar-custom {
+  background-color: #568D4B;
+  color: #ffffff;
+  border-radius: 0;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+  background-color: #568D4B;
+}
+
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus, .navbar-custom .navbar-nav .open>a  { 
+  background-color: #568D4B;
+}
+
+     
+/* dropdown */
+.navbar-custom .navbar-nav .dropdown-menu  { 
+  background-color: #568D4B;
+}
+.navbar-custom .navbar-nav .dropdown-menu>li>a  { 
+  color: #fff;
+}
+.navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  { 
+  color: #568D4B;
+}
+      
+.navbar-custom .navbar-brand {
+  color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+  background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  background-color:#568D4B;
+}
+
+.beer {
+  position: relative;
+}
+.mybeer {
+  background-color: lightyellow;
+}
+
+.vendor { color: #A41D1A; }
+.tent small { color: #D26A1B; }
+.beername { color: #293757; }
+.mybeer .beername {
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+.beerinfo {
+  color: saddlebrown;
+  font-family: "Roboto Slab", Georgia, "Times New Roman", serif;
+}
+.beerdetails {
+  opacity: 0.5;
+}
+#vendorsbeers li, .beer { /*, #mybeers li {*/
+  cursor: pointer;
+}
+.highlight {
+  background-color: lightyellow;
+}
+.hometown {
+  font-family: "Roboto Slab", Georgia, "Times New Roman", serif;
+  color: gray;
+  margin-top: 1.1em;
+  vertical-align: bottom;
+}
+.vendorname, .hometown {
+  font-size: 0.85em;
+}
+
+#viponly, #bottomNav div {
+  cursor: pointer;
+}
+
+#footer .v-link-active {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #D5BB56;
+}
+
+/*
+  animate.css transitions / animation
+*/
+.animated {
+  animation-duration: .75s;
+  -webkit-animation-duration: .75s;
+  -moz-animation-duration: .75s;
+}

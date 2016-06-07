@@ -1,0 +1,52 @@
+<h2>
+	List of Beers
+</h2>
+<div class="row">
+	<div class="col-xs-12" style="margin-bottom: 1em">
+		<input type="search" name="beersFilter" v-model="beersFilter" @input="debounce 400" placeholder="filter beer list">
+		<select name="beertypes" id="beertypes" v-model="styleFilter">
+			<option value="">ALL</option>
+			<option value="Cider">Cider</option>
+			<option value="IPA">IPA</option>
+			<option value="Pale Ale">Pale Ale</option>
+			<option value="Saison">Saison</option>
+			<option value="Stout">Stout</option> 
+			<option value="Tripel">Tripel</option>
+			<option value="Witbier">Witbier</option>
+		</select>
+		&nbsp;&nbsp;&nbsp;
+		<!-- TODO
+		TENT
+		<div class="btn-group tentbuttons" role="group" aria-label="Basic example">
+		  <input type="radio tent" size="2" v-model="tentFilter" value="A" readonly class="btn btn-small btn-default">
+		  <input type="radio tent" size="2" v-model="tentFilter" value="B" readonly class="btn btn-small btn-default">
+		  <input type="radio tent" size="2" v-model="tentFilter" value="C" readonly class="btn btn-small btn-default">
+		  <input type="radio tent" size="2" v-model="tentFilter" value="D" readonly class="btn btn-small btn-default">
+		  <input type="radio tent" size="2" v-model="tentFilter" value="E" readonly class="btn btn-small btn-default">
+		</div>
+		&nbsp;&nbsp;&nbsp;
+		-->
+		<input type="checkbox" name="viponly" id="viponly" v-model="vipFilter"> <label for="viponly">VIP Only</label>
+	</div>
+</div>
+
+<div v-if="!allBeers.length" class="alert alert-warning">Loading...</div>
+
+<ul id="beerlist" class="list-group">
+	<li
+		v-for="beer in allBeers | limitBy 500 | filterBy beersFilter | filterBy styleFilter 'beerStyle' | filterBy tentFilter | filterBy vipFilter 'VIP == true'"
+		class="list-group-item beer"
+		:class="{'mybeer animated pulse' : beer.myBeer}"
+		:click=""
+		track-by="beerName">
+		<img @click="addLocal(beer)" v-show="!beer.myBeer" title="Add to My Beers" src="images/plus.png" class="addbeer" title="Add to My Beers" />
+		<img @click="removeLocal(beer)" v-show="beer.myBeer" title="Remove from My Beers" src="images/cross.png" class="removebeer" title="Remove from My Beers" />
+		&nbsp;
+		<span class="beername">{{ beer.beerName }}</span> 
+		<small class="beerstyle" title="Style">{{ beer.beerStyle }}</small>
+		<small class="beerabv" title="ABV">{{ beer.beerABV }}</small>
+		<span class="vendor">{{ beer.vendorName }}</span> 
+		<span class="tent"><small>{{ beer.tent }}</small></span>
+		<span v-if="beer.VIP" class="label label-pill label-danger">VIP</span><br>
+	</li>
+</ul>

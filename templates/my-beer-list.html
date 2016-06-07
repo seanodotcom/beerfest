@@ -1,0 +1,38 @@
+<h2>
+	My Beers
+	<span v-if="myBeers.length"> - <span v-text="myBeers.length || ''"></span> selected</span>
+</h2>
+<!--
+<p>
+	myBeers: <pre>{{ myBeers | json }}</pre>
+</p>
+	<pre>DATA: {{ store.state.myBeers | json }}</pre>
+	<pre>DATA: {{ store.state.allBeers | json }}</pre>
+-->
+<ul id="mybeers" class="list-group" data-spy="affix" data-offset-top="-60">
+	<!-- <li v-for="beer in myBeers" track-by="$index"> -->
+	<li
+		v-for="beer in myBeers | limitBy 500"
+		track-by="beerName"
+		transition="bounce"
+		class="list-group-item beer mybeer animated">
+		<p>
+			<img v-on:click="removeLocal(beer)" src="images/cross-24.png" title="Remove from My Beers" />&nbsp;
+			<span class="beername">{{ beer.beerName }}</span>
+			<!-- {{ beer.beerName }} -->
+			<small class="" title="Style">{{ beer.beerStyle }}</small>
+			<small class="" title="ABV">{{ beer.beerABV }}</small>
+			<span v-if="VIP" class="label label-pill label-danger">VIP</span>
+		</p>
+		<div class="btn-group" role="group" aria-label="Basic example">
+		  <button v-on:click="like(beer)" type="button" class="btn btn-small btn-default"><span class="glyphicon glyphicon-heart"></span> Like</button>
+		  <button v-on:click="dislike(beer)" type="button" class="btn btn-small btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> Dislike</button>
+		</div>
+	</li>
+</ul>
+
+<div v-if="!myBeers.length" class="alert alert-warning" role="alert">
+  <strong>No Beers Selected</strong><br>
+  Check the list of beers and add the ones you're interested in.
+</div>
+		<!-- v-for="beer in beers | limitBy 10 | filterBy beersFilter in 'beer'" -->
